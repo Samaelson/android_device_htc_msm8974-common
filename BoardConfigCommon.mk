@@ -126,6 +126,9 @@ TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
 DEVICE_MANIFEST_FILE := $(PLATFORM_PATH)/manifest.xml
 DEVICE_MATRIX_FILE := $(PLATFORM_PATH)/compatibility_matrix.xml
 
+# Legacy memfd
+TARGET_HAS_MEMFD_BACKPORT := true
+
 # LMKD stats logging
 TARGET_LMKD_STATS_LOG := true
 
@@ -135,6 +138,8 @@ TARGET_USES_INTERACTION_BOOST := true
 # SELinux
 include device/qcom/sepolicy-legacy/sepolicy.mk
 BOARD_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy
+BOARD_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy/temp
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 
 # Shims
 TARGET_LD_SHIM_LIBS := \
