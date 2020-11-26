@@ -152,4 +152,3 @@ namespace.sphal.link.platform.shared_libs += libz.so
 # to check the accessibility of the lib.
 namespace.sphal.permitted.paths += /apex/com.android.vndk.${VNDK_APEX_VER}/${LIB}
 namespace.sphal.asan.permitted.paths += /apex/com.android.vndk.${VNDK_APEX_VER}/${LIB}
-
