@@ -1,6 +1,6 @@
 #
 # Copyright (C) 2015-2016 The CyanogenMod Project
-#               2017-2019 The LineageOS Project
+#               2017-2020 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -22,8 +22,6 @@
 # included in a build is to use PRODUCT_PACKAGES in a product
 # definition file).
 #
-
-BUILD_BROKEN_USES_BUILD_COPY_HEADERS := true
 
 PLATFORM_PATH := device/htc/msm8974-common
 
@@ -126,6 +124,9 @@ TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
 DEVICE_MANIFEST_FILE := $(PLATFORM_PATH)/manifest.xml
 DEVICE_MATRIX_FILE := $(PLATFORM_PATH)/compatibility_matrix.xml
 
+# Legacy memfd
+TARGET_HAS_MEMFD_BACKPORT := true
+
 # LMKD stats logging
 TARGET_LMKD_STATS_LOG := true
 
@@ -135,6 +136,7 @@ TARGET_USES_INTERACTION_BOOST := true
 # SELinux
 include device/qcom/sepolicy-legacy/sepolicy.mk
 BOARD_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 
 # Shims
 TARGET_LD_SHIM_LIBS := \
