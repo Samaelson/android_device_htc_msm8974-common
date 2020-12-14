@@ -39,7 +39,7 @@ source "${HELPER}"
 function blob_fixup() {
     case "${1}" in
         vendor/lib/mediadrm/libwvdrmengine.so)
-            patchelf --add-needed "libprotobuf-cpp-lite-vendorcompat.so" --set-rpath "/vendor/lib" "${2}"
+            patchelf --replace-needed "libprotobuf-cpp-lite.so" "libprotobuf-cpp-lite-v29.so" "${2}"
             ;;
     esac
 }

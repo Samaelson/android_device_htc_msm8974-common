@@ -118,14 +118,15 @@ MAX_EGL_CACHE_KEY_SIZE := 12*1024
 MAX_EGL_CACHE_SIZE := 2048*1024
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 TARGET_ADDITIONAL_GRALLOC_10_USAGE_BITS := 0x02000000U
+TARGET_DISABLE_POSTRENDER_CLEANUP := true
 TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
 
 # HIDL
 DEVICE_MANIFEST_FILE := $(PLATFORM_PATH)/manifest.xml
 DEVICE_MATRIX_FILE := $(PLATFORM_PATH)/compatibility_matrix.xml
 
-# Legacy memfd
-TARGET_HAS_MEMFD_BACKPORT := true
+# LMKD stats logging
+TARGET_LMKD_STATS_LOG := true
 
 # Power
 TARGET_USES_INTERACTION_BOOST := true
@@ -133,16 +134,12 @@ TARGET_USES_INTERACTION_BOOST := true
 # SELinux
 include device/qcom/sepolicy-legacy/sepolicy.mk
 BOARD_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy
-BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 
 # Shims
 TARGET_LD_SHIM_LIBS := \
     /system/lib/liblog.so|liblog_htc.so \
     /system/vendor/lib/hw/camera.vendor.msm8974.so|libshim_camera.so \
     /system/vendor/lib/libril-qc-qmi-1.so|libshim_ril.so
-
-# SVELTE config
-MALLOC_SVELTE := true
 
 # Wifi
 BOARD_HAS_QCOM_WLAN := true

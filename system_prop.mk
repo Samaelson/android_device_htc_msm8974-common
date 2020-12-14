@@ -26,6 +26,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Dalvik heap
 PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.heapstartsize=16m \
+    dalvik.vm.heapgrowthlimit=192m \
+    dalvik.vm.heapsize=512m \
     dalvik.vm.heaptargetutilization=0.75 \
     dalvik.vm.heapminfree=2m \
     dalvik.vm.heapmaxfree=8m
@@ -35,8 +37,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     debug.egl.hw=1 \
     debug.hwui.use_buffer_age=false \
     debug.mdpcomp.logs=0 \
-    debug.sf.enable_gl_backpressure=1 \
+    debug.sf.disable_backpressure=1 \
     debug.sf.hw=1 \
+    debug.sf.latch_unsignaled=1 \
     dev.pm.dyn_samplingrate=1 \
     persist.hwc.mdpcomp.enable=true \
     ro.opengles.version=196608 \
@@ -55,6 +58,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # LMKD
 PRODUCT_PROPERTY_OVERRIDES += \
+    ro.lmk.critical_upgrade=true \
+    ro.lmk.downgrade_pressure=60 \
+    ro.lmk.kill_heaviest_task=false \
+    ro.lmk.log_stats=true \
+    ro.lmk.upgrade_pressure=40 \
     ro.lmk.use_psi=false
 
 # Media
@@ -91,11 +99,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # RIL
 PRODUCT_PROPERTY_OVERRIDES += \
-    keyguard.no_require_sim=true \
     rild.libpath=/vendor/lib/libril-qc-qmi-1.so \
     ril.subscription.types=NV,RUIM \
     ro.baseband.arch=msm \
-    ro.com.android.dataroaming=true \
     ro.data.large_tcp_window_size=true \
     ro.ril.hsupa.category=6 \
     ro.ril.def.agps.mode=1 \
